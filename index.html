@@ -1,0 +1,1646 @@
+<!-- Copy the starter template then modify it -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+            Please refer to my HTML lectures
+            for adding other meta elements for CEO purposes
+    -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!--
+        For using BS Icons:
+        How to use Bootstrap icons?
+        Step 1: Include the following Bootstrap CDN link in the <head> section of you HTML document.
+        bootstrap-icons => Official open source SVG icon library for Bootstrap
+        link: https://cdnjs.com/libraries/bootstrap-icons
+
+        NOTE: Copy the link for the CSS minified file
+     -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.1/font/bootstrap-icons.min.css"
+        integrity="sha512-WYaDo1TDjuW+MPatvDarHSfuhFAflHxD87U9RoB4/CSFh24/jzUHfirvuvwGmJq0U7S9ohBXy4Tfmk2UKkp2gA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>ABC Advanced Academy</title>
+</head>
+
+
+<body>
+    <!-- 
+        To check the exact pixels for BS breakpoints:
+        link: https://getbootstrap.com/docs/5.2/layout/breakpoints/
+        Breakpoint	        Class infix	    Dimensions
+        X-Small	            None	        <576px
+        Small	            sm	            ≥576px
+        Medium	            md	            ≥768px
+        Large	            lg	            ≥992px
+        Extra large	        xl	            ≥1200px
+        Extra extra large	xxl	            ≥1400px
+
+        Background Color:
+        using bg-light
+        Background Color link: https://getbootstrap.com/docs/5.2/utilities/background/
+        Text Color link: https://getbootstrap.com/docs/5.2/utilities/colors/
+     -->
+
+    <!-- Starting with the HTML5 header element to include the entire BS navbar code -->
+    <header>
+
+        <!--
+        Navbar: You can build it step by step or copy the navbar template and modify it
+        
+        Navbar:   documents => components => navbar
+        link: https://getbootstrap.com/docs/5.2/components/navbar/
+
+        Navbars require a wrapping:
+        .navbar with .navbar-expand{-sm|-md|-lg|-xl|-xxl}
+        for responsive collapsing and color scheme classes.
+
+        documents => components => navbar
+
+        classes:
+        - navbar
+        - navbar-expand-lg => expand the navbar only on large screens
+        under large screen => will be a hamburger menu!
+
+        NOTE:
+        Since the navbar background is dark, 
+        we need to inform BS that the navbar is "dark"
+        So BS can apply a light color text. 
+        We can just do it by adding the class "navbar-dark" :-)
+
+        Choose from:
+        These two classes will affect the text color:
+        - .navbar-light for use with light background colors => This will add a black text color
+        - .navbar-dark for dark background colors => This will add a white text color
+
+        You can customize with .bg-* utilities.
+        These .bg-color classes to change the background color of the navbar
+        (.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-secondary, .bg-dark and .bg-light)
+
+        ==========================================================
+        One Final Extra Addon is giving a navbar a fix positioning:
+        Use BS position utilities to place navbars in non-static positions.
+        Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there).
+
+        Using the BS class: .fixed-top
+
+        Link: https://getbootstrap.com/docs/5.2/components/navbar/#placement
+
+        Very Important Note:
+        Using position property will affect the normal flow of any block-level element
+        so the elements beneath it will jump above.
+        As this what happens when using BS position of fixed with nav
+        To fix it, we can add our custom CSS (Check the code)
+
+        For this demo, I will remove the class ".fixed-top" 
+        to be added later or in our lecture for live demonstration
+
+        Part#1: main container <nav> element
+    -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <!--
+            Part#2: second main container div element
+
+            the div.container to wrap the entire nav elements!
+            .container => sets a max-width at each responsive breakpoint
+
+            We can change "container-fluid" to "container" if we like to do it:
+        -->
+            <div class="container">
+                <!--
+                Navbar content: Adding the logo/branding as link to the home page
+                class "navbar-brand" for your company, product, or project name.
+                Link: https://getbootstrap.com/docs/5.2/components/navbar/?#nav
+            -->
+                <a class="navbar-brand" href="#">ABC Advanced Academy</a>
+
+                <!--
+                Adding the button for hamburger icon
+                This button will appear only when we the screen is less than large
+                So it has this:
+                .navbar-toggler => for use with BS collapse plugin and other navigation toggling behaviors.
+
+                **********************
+                Using data attributes:
+                **********************
+                HTML5 is designed with extensibility in mind for data 
+                that should be associated with a particular element 
+                but need not have any defined meaning. 
+                data-* attributes allow us to store extra information on standard,
+                semantic HTML elements without other hacks 
+                such as non-standard attributes, or extra properties on DOM.
+                link: https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+
+                data-* Attributes:
+                * The data-* attribute is used to store custom data private to the page or application.
+                * The data-* attribute gives us the ability to embed custom data attributes on all HTML elements.
+
+                NOTE:
+                These two attributes:
+                - data-bs-target
+                - aria-controls
+                must have the value of the "id" attribute for the div element
+                that contains the nav elements
+
+                ARIA enables developers to describe their widgets in more detail
+                by adding special attributes to the markup.
+                Designed to fill the gap between standard HTML tags and the desktop-style controls
+                found in dynamic web applications,
+                ARIA provides roles and states that describe the behavior of most familiar UI widgets.
+
+                The original link for this article:
+                https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA
+
+                You can check this Youtube video title:
+                ARIA, Accessibility APIs and coding like you give a damn! 
+                – Léonie Watson / Front-Trends 2015
+                The link is: https://youtu.be/qdB8SRhqvFc
+
+                Or This Youtube channel: W3C Web Accessibility Initiative (WAI)
+            -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <!--
+                    Adding the span element for the hamburger icon
+                    The span element for loading the icon in small devices screens 
+                -->
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!--
+                All nav elements are inclosed with another div:
+                This div element to wrap the ul and its li items
+                the two classes .collapse and .navbar-collapse 
+                are for grouping and hiding navbar contents by a parent breakpoint
+                .collapse => hides content => make the nav collapsed in smaller screens
+
+                Both: .collapse and .navbar-collapse
+                are used for grouping and hiding navbar contents by a parent breakpoint.
+
+                Notice that the "id" value is used by BS to target this div element
+                Through the toggle button (the hamburger icon)
+                To hide/show (toggle) the nav elements
+
+                So this id value will be used with attribute "data-target" inside the button element
+            -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!--
+                    The ul element:
+                    .navbar-nav => for a full-height and lightweight navigation
+                    (including support for dropdowns).
+
+                    Where property is one of:
+                    m - for classes that set margin
+                    p - for classes that set padding
+
+                    NOTES:
+                    For Auto margins, We can use the "Flexbox" options
+                    which mix flex alignments with auto margins:
+                    - .me-auto => (me) margin-end pushing/moving the current element to the left
+                    - .ms-auto => (ms) margin-start pushing/moving the current element to the right
+
+                    in some situation when using div with a elements, we can also use:
+                    - .ml-auto => (ml) margin-lef having margin on the left to push/move current element
+
+                    It's nice to have the navigation item on the right side:  .ms-auto
+
+                    Link: https://getbootstrap.com/docs/5.2/utilities/flex/#auto-margins
+                    Link: https://getbootstrap.com/docs/5.0/utilities/spacing/#notation
+
+                    - Using horizontal margin utilities like .ms-auto as spacers:
+                    - removing this .ms-auto will align the nav list items besides the logo (no good!)
+
+                    For more reading and example:
+                    .my-2
+                    * m: for margins (adding margins)
+                    * y: for both top and bottom margins 
+                    (think about the y horizontal axis)
+                    * -2:  Classes are built from a default Sass map 
+                    ranging from .25rem to 3rem
+                    so 2 sets margin or padding to .5rem (8px if font-size is 16px)
+
+                    For more info:
+                    https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp
+                    Or:
+                    https://www.w3schools.com/bootstrap5/bootstrap_utilities.php
+
+                    W3Schools Table:
+                    Where size is one of:
+                    0 - sets margin or padding to 0
+                    1 - sets margin or padding to .25rem (4px if font-size is 16px)
+                    2 - sets margin or padding to .5rem (8px if font-size is 16px)
+                    3 - sets margin or padding to 1rem (16px if font-size is 16px)
+                    4 - sets margin or padding to 1.5rem (24px if font-size is 16px)
+                    5 - sets margin or padding to 3rem (48px if font-size is 16px)
+                    auto - sets margin to auto
+
+                    .mb-2 => set the bottom margin to 2 in all screen sizes
+                    .my-lg-0 => set the top/bottom margin to 0 in large screen size only
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <!--
+                            Add the .active class on .nav-link to indicate the current page.
+                        -->
+                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#curriculum">Curriculum</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#instructors">Our Instructors</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#faq">FAQ</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonial">Students Testimonial</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact Us</a>
+                        </li>
+                    </ul>
+                </div> <!-- end div.collapse -->
+            </div> <!-- end div.container-fluid -->
+        </nav>
+
+        <!-- 
+        for this section#features,
+        We don't want it to be visible in small screens, only the medium and above
+        I added:
+        - .d-none => to make it hidden in all screens (in css we used display: none)
+        But since we want this carousel to appear on medium screens and above,
+        we need to add this BS class also:
+        - .d-md-block => for the medium size and beyond will be display: block
+     -->
+        <section id="features" class="d-none d-md-block">
+            <!-- 
+        Carousel:
+        A slideshow component for cycling through elements—images or slides of text—like a carousel.
+        link: https://getbootstrap.com/docs/5.2/components/carousel/
+
+        Using this specific one with caption:
+        Add captions to your slides easily with the .carousel-caption element 
+        within any .carousel-item. 
+        They can be easily hidden on smaller viewports,
+        as shown below, with optional display utilities. 
+        We hide them initially with .d-none and bring them back on medium-sized devices with .d-md-block.
+        link: https://getbootstrap.com/docs/5.2/components/carousel/#with-captions
+
+        Explanations:
+        data-* Attributes:
+        * The data-* attribute is used to store custom data private to the page or application.
+        * The data-* attribute gives us the ability to embed custom data attributes on all HTML elements.
+        link: https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
+
+        The data-bs-ride="carousel" attribute activates the carousel.
+        Before Bootstrap version 5 => data-ride="carousel"       
+
+        The data-bs-ride="carousel" attribute is used to mark a carousel 
+        as animating starting at page load. 
+
+        If you don't use data-bs-ride="carousel" to initialize your carousel, 
+        you have to initialize it yourself.
+
+        It cannot be used in combination with (redundant and unnecessary) explicit JavaScript initialization of the same carousel.
+
+        The [data-bs-slide] and [data-bs-slide-to] attributes 
+        specifies which slide to go to.
+
+        The data-bs-slide attribute accepts two values: 
+        prev or next, while data-slide-to accept numbers.
+
+        Changes:
+        Notice that we renamed the id value of the carousel div 
+        from "carouselExampleCaptions" to be "carouselFeatures"
+
+        This new value id value of "carouselFeatures" 
+        is used by [data-bs-target] attribute for button to browse/move the carousel
+        so all of the occurrence of the word "carouselExampleCaptions"
+        has to be replaced with the new word that we used "carouselFeatures"
+        
+        HINT: 
+        CTRL+H => For replace, then you can use replace one by one to check/read first
+    -->
+            <div id="carouselFeatures" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselFeatures" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1">
+                    </button>
+                    <button type="button" data-bs-target="#carouselFeatures" data-bs-slide-to="1" aria-label="Slide 2">
+                    </button>
+                    <button type="button" data-bs-target="#carouselFeatures" data-bs-slide-to="2" aria-label="Slide 3">
+                    </button>
+                    <!-- Adding one more button for the fourth image -->
+                    <button type="button" data-bs-target="#carouselFeatures" data-bs-slide-to="3" aria-label="Slide 4">
+                    </button>
+                </div> <!-- end div.carousel-indicators -->
+                <!-- 
+            This div.carousel-inner will be the wrapper for the images
+            -->
+                <div class="carousel-inner">
+                    <!-- 
+            One of the images has to have the class active 
+            to be displayed the initial/first/default image to be displayed in the page
+            which is usually the first image of your carousel image collection, 
+            
+            Bootstrap will remove/add this class dynamically
+            to all the images in this carousel
+            -->
+                    <div class="carousel-item active">
+                        <!-- 
+            * .w-100 is a bootstrap utility class to set the image to be 100% as it's container
+            link: https://getbootstrap.com/docs/5.2/utilities/sizing/
+
+            * .d-block is a bootstrap utility class to set display to block and Visible on all screen sizes
+            link: https://getbootstrap.com/docs/5.2/utilities/display/
+
+                 -->
+                        <img src="images/carousel1.jpg" class="d-block w-100" alt="...">
+                        <!-- 
+                    .carousel-caption: Add captions to your slides within any .carousel-item. 
+
+                    They can be easily hidden on smaller viewport, as shown below, with optional display utilities. 
+                    We hide them initially with .d-none and bring them back on medium-sized devices with .d-md-block.
+
+                    In case, if you have this carousel visible in any screen,
+                    but you want to hide the captions (title and text)
+                    for the small screens, you can also added the same two BS classes:
+                    .d-none => to make it hidden in all screens (in css we used display: none)
+                    .d-md-block => for the medium size and beyond will be display: block
+
+                    Example:
+                    <div class="carousel-caption d-none d-md-block">
+                -->
+                        <div class="carousel-caption">
+                            <h5>ٍSuccess Path</h5>
+                            <p>
+                                ABC Advanced Academy will take you from the starting points A, B, C till you reach your
+                                destination
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="images/carousel2.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption">
+                            <h5>Different Learning Resources</h5>
+                            <p>
+                                ABC Advanced Academy provides all the needed learning resources from hard copies and the
+                                digital ones
+                                in our large library
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/carousel3.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption">
+                            <h5>Different Facilities</h5>
+                            <p>
+                                We have all the needed facilities for your success including
+                                laboratories and studying rooms
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 
+                    BS template provides only 3 items,
+                    Below adding one more for the fourth student
+                -->
+                    <div class="carousel-item">
+                        <img src="images/carousel4.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption">
+                            <h5>Help and Supports</h5>
+                            <p>
+                                Our experienced instructors and mentors are always available for one-to-one assistant
+                                and
+                                feedbacks in-class or online
+                            </p>
+                        </div>
+                    </div>
+                </div> <!-- end div.carousel-inner -->
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselFeatures"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselFeatures"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div> <!-- end div#carouselFeatures .carousel" -->
+        </section> <!-- end section#features -->
+    </header>
+
+    <!--
+        Adding first section For Home
+        NOTE:
+        For this section, we didn't add any class of container
+        To make the section background running from left to right
+        Giving us the feeling of filling the entire row
+
+        However the content inside need to be contained with a container
+
+        >> background color: bg-secondary
+        link: https://getbootstrap.com/docs/5.2/utilities/colors/
+        >> font/text color: text-white
+        link: https://getbootstrap.com/docs/5.2/utilities/background/
+    -->
+
+    <!-- Home Section -->
+    <section id="home" class="container mt-3 bg-secondary text-white">
+        <!--
+                Using flex to have two items in one row beside each other
+                ITEM1 ITEM2
+
+                Item1 => the div that contains the text
+                Item2 => the div that contains the image
+
+                Using .d-flex for the main div
+                .d-flex will be applied to all screen sizes
+                which means align the children elements side by side
+
+                So it's better to apply the flex box only with medium screens and above
+                using .d-md-flex
+
+                link: https://getbootstrap.com/docs/5.2/utilities/flex/
+
+                text-center: to center all the contents texts and images
+
+                Using BS spacing classes:
+                Adding BS margins between the icons (on the left/right sides) => using x-axis => mx-2 (.5rem)
+                the same idea for padding (px-2)
+                2 is just a BS varaible to set the value to .5rem as shown below
+
+                Where size is one of:
+
+                0 - sets margin or padding to 0
+                1 - sets margin or padding to .25rem (4px if font-size is 16px)
+                2 - sets margin or padding to .5rem (8px if font-size is 16px)
+                3 - sets margin or padding to 1rem (16px if font-size is 16px)
+                4 - sets margin or padding to 1.5rem (24px if font-size is 16px)
+                5 - sets margin or padding to 3rem (48px if font-size is 16px)
+                auto - sets margin to auto
+
+                W3Schools: https://www.w3schools.com/bootstrap5/bootstrap_utilities.php
+
+                py-3: Adding 3 margins from top and bottom (Y-axis)
+                px-3: Adding 3 margins from left and right (X-axis)
+
+            With Flex, we can also use align and Justify:
+
+            Align Items:
+            .align-items-center => align the element vertically
+
+            link: https://getbootstrap.com/docs/5.2/utilities/flex/#align-items
+
+            Justify Contents: => adding/removing spaces between/after/before the contents
+            .justify-content-between
+            .justify-content-between
+            and more...
+            link: https://getbootstrap.com/docs/5.2/utilities/flex/#justify-content
+        -->
+        <div class="d-md-flex py-3 align-items-center">
+            <!--
+                    .text-center => Center aligned text on all viewport sizes
+                    .text-md-start => Start aligned text on viewports sized MD (medium) or wider.
+                    link: https://getbootstrap.com/docs/5.2/utilities/text/#text-alignment
+            -->
+            <article class="text-center text-md-start">
+                <h1>Web Developer</h1>
+                <!--
+                        Lead:
+                        Make a paragraph stand out by adding .lead
+                        link: https://getbootstrap.com/docs/5.2/content/typography/#lead
+                    -->
+                <p class="lead">The Web Development 8-month program provides you with the necessary skills and
+                    training to enter
+                    and
+                    succeed in the website development. The program will help you to develop a full functional
+                    website by
+                    teaching you the required skills for the front-end and back-end development.
+                </p>
+                <p class="lead">
+                    After finishing this program you will be equipped with many skills to choose your career to work
+                    as Front-End Developer, Back-End Developer, or Full-Stack Developer
+                </p>
+
+                <!-- 
+        BS Modal:
+        Using Bootstrap's JavaScript modal plugin 
+        to add dialogs to your site for:
+        - lightboxes
+        - user notifications
+        - or completely custom content
+
+        link: https://getbootstrap.com/docs/5.2/components/modal/
+
+        For This demonstration, we will use "Static backdrop"
+        When backdrop is set to static, 
+        the modal will not close when clicking outside it. 
+        link: https://getbootstrap.com/docs/5.2/components/modal/#static-backdrop        
+    -->
+
+                <!-- Button trigger modal -->
+                <!-- 
+        Button trigger modal 
+        
+        Adding Bootstrap button:
+        https://getbootstrap.com/docs/5.2/components/buttons/
+
+        - We need to connect this button with our modal,
+        so it will activate/launch our model window (div) when this button is clicked
+
+        - We can do it by using: 
+        * data-bs-toggle="modal" 
+          Before BS version 5 => data-toggle="modal" 
+        
+        * data-bs-target="#staticBackdrop" 
+          Before BS version 5 => data-target="#staticBackdrop"
+          NOTE: This value has to match the value of its modal div id
+    -->
+                <button type="button" class="btn btn-dark btn-lg my-2" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Sign up now!
+                </button>
+            </article> <!-- end article for text -->
+
+            <!-- Modal -->
+            <!-- 
+        Modal Options:
+        Options can be passed via data attributes or JavaScript. 
+        For data attributes, append the option name to data-, 
+        as in data-backdrop="" the previous (older) versions of BS
+        or data-bs-backdrop="" in the current (newer) versions of BS.
+        
+        Backdrop:
+        Scrolling the <body> element is disabled 
+        when an offcanvas and its backdrop are visible. 
+        Use the data-bs-scroll attribute to toggle <body> scrolling 
+        and data-bs-backdrop to toggle the backdrop.
+
+        link: https://getbootstrap.com/docs/5.2/components/offcanvas/#backdrop
+
+        [data-bs-backdrop] attribute can have one of these values:
+        - boolean value:
+        -- true: dark overlay
+        -- false: no overlay (transparent)
+        - or the string "static": If you specify the value "static",
+        it is not possible to close the modal when clicking outside of it
+
+        Use the .fade class to add a fading effect when opening and closing the modal
+
+        [data-bs-keyboard] attribute can have  one of these values:
+        - true: true - the modal can be closed with Esc Key
+        - false: false - the modal cannot be closed with Esc Key
+     -->
+
+            <div class="modal fade text-black" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <!-- 
+    .modal-dialog: makes the modal narrower than the full width of the page
+    -->
+                <div class="modal-dialog">
+                    <!-- 
+        .modal-content: the content inside our modal
+        Styles the modal properly with border, background-color, etc.
+        -->
+                    <div class="modal-content">
+                        <!-- Adding our form inside the modal content: -->
+                        <!-- 
+                                BS Forms:
+                                link: https://getbootstrap.com/docs/5.2/forms/overview/
+
+                                Using the basic/essential template and modify it:
+                                -->
+                        <form>
+                            <!-- 
+            .modal-header: Defines the style for the header of the modal
+            -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">
+                                    Apply to the Web Development Bootcamp
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <!-- 
+            .modal-body: Defines the style for the body of the modal
+            -->
+                            <div class="modal-body">
+                                <!-- 
+                                        Adding this div for full name 
+                                        .mb-3 => adding margin of 3 points from the bottom only
+                                    -->
+                                <div class="mb-3">
+                                    <!-- 
+                                            using the value of "firstName":
+                                            - for and id attributes 
+                                        -->
+                                    <label for="firstName" class="form-label">
+                                        First Name
+                                    </label>
+                                    <!-- 
+                                        aria-describedby attribute: 
+                                        ==========================
+                                        Associating form text with form controls
+                                        Form text should be explicitly associated with 
+                                        the form control it relates 
+                                        to using the aria-describedby attribute. 
+                                        This will ensure that assistive technologies—such 
+                                        as screen readers—will announce this form text 
+                                        when the user focuses or enters the control.
+                
+                                        link: https://getbootstrap.com/docs/5.2/forms/overview/#form-text
+                
+                                        aria-describedby attribute is linked to the id value
+                                        for the element that describe this field:
+                                        - input element => aria-describedby="fullNameHelp"
+                                        - div element => id="fullNameHelp"
+                                        - .form-text => (Form Text) 
+                                        used to create Block-level or inline-level form text
+                
+                                        Supported elements:
+                                        ==================
+                                        Validation styles are available for the following
+                                        form controls and components:
+                
+                                        - <input>s and <textarea>s with .form-control 
+                                        (including up to one .form-control in input groups)
+                                        
+                                        - <select>s with .form-select
+                
+                                        - .form-checks
+                
+                                        link: https://getbootstrap.com/docs/5.2/forms/validation/#supported-elements
+                                        -->
+                                    <input type="text" class="form-control" id="firstName"
+                                        aria-describedby="firstNameHelp">
+                                    <!-- 
+                                        Form text below inputs can be styled with .form-text. 
+                                        If a block-level element will be used, 
+                                        a top margin is added for easy spacing from the inputs above.
+                                        -->
+                                    <div id="firstName" class="form-text">
+                                        Your full name.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">
+                                        Last Name
+                                    </label>
+                                    <input type="text" class="form-control" id="lastName"
+                                        aria-describedby="lastNameHelp">
+                                    <div id="lastName" class="form-text">
+                                        Your full name.
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">
+                                        We'll never share your email with anyone
+                                        else.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="inputAddress1">Address 1</label>
+                                    <input type="text" class="form-control" id="inputAddress1"
+                                        placeholder="1234 Main St">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="inputAddress2">Address 2</label>
+                                    <input type="text" class="form-control" id="inputAddress2"
+                                        placeholder="Apartment, studio, or floor">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="inputCity">City</label>
+                                    <input type="text" class="form-control" id="inputCity">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="provinceSelect">Province</label>
+                                    <select id="provinceSelect" class="form-select" aria-label="Default select example">
+                                        <option selected>Select your province</option>
+                                        <option value="AB">Alberta</option>
+                                        <option value="BC">British Columbia</option>
+                                        <option value="MB">Manitoba</option>
+                                        <option value="NB">New Brunswick</option>
+                                        <option value="NL">Newfoundland and Labrador</option>
+                                        <option value="NS">Nova Scotia</option>
+                                        <option value="ON">Ontario</option>
+                                        <option value="PE">Prince Edward Island</option>
+                                        <option value="QC">Quebec</option>
+                                        <option value="SK">Saskatchewan</option>
+                                        <option value="NT">Northwest Territories</option>
+                                        <option value="NU">Nunavut</option>
+                                        <option value="YT">Yukon</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="commentsTextarea" class="form-label">
+                                        Comments
+                                    </label>
+                                    <!-- 
+                                            Accessibility:
+                                            ==============
+                                            .aria-label:
+                                            - Explicitly setting the accessible name on an element 
+                                            - Its value should the same as the label value
+                                            that is linked to this textarea (obviously)
+                
+                                            link: https://getbootstrap.com/docs/5.2/forms/overview/#accessibility
+                                         -->
+                                    <textarea class="form-control" aria-label="Your Message" id="commentsTextarea">
+                                        </textarea>
+                                </div>
+                            </div>
+
+                            <!-- 
+            .modal-footer: Defines the style for the footer in the modal. 
+            Note: This area is right-aligned by default.
+            -->
+                            <div class="modal-footer">
+                                <!-- Adding the button for the form submission -->
+                                <button type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
+                                <!-- BS default button for closing the modal -->
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- no need for this button -->
+                                <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                            </div>
+
+
+                        </form>
+                    </div> <!-- end div.modal-content -->
+                </div> <!-- end div.modal-dialog -->
+            </div> <!-- end div.modal -->
+            <!--
+                Notice that the image will be fully expanded
+
+                Responsive images:
+                Images in Bootstrap are made responsive with .img-fluid.
+                This applies max-width: 100%; and height: auto; to the image
+
+                so that it scales with the parent element
+                BS: https://getbootstrap.com/docs/5.2/content/images/#responsive-images
+
+                Sizing
+                Easily make an element as wide or as tall with our width and height utilities
+                using: w-50 and w-100
+                BS: https://getbootstrap.com/docs/5.2/utilities/sizing/#relative-to-the-parent
+
+                using
+                .rounded-circle
+                .rounded
+                .rounded-pill
+                to add rounded corners:
+                link: https://getbootstrap.com/docs/5.2/utilities/borders/#border-radius
+            -->
+            <img src="images/programmer.jpg" alt="Female Programmer"
+                class="w-50 img-fluid rounded d-none d-sm-block mx-3">
+        </div> <!-- end div for flex -->
+    </section> <!-- end section#home -->
+
+
+
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="container py-3">
+        <!--
+                For working with columns, we need the main div with class "row"
+
+                Gap:
+                When using display: grid, you can make use of gap utilities 
+                on the parent grid container. 
+
+                Adding gap when the three elements stack over each other:
+                gap-0 => no gaps
+                There is no .gap-auto utility class 
+                as it’s effectively the same as .gap-0.
+                ......
+                gap-2 => 2 points gap
+                https://getbootstrap.com/docs/5.2/utilities/spacing/#gap
+            -->
+        <div class="row text-center gap-2">
+            <!--
+                    We need to layout/distribute the column evenly:
+                    using .col => layout the column horizontally in all screens
+                    using .col-md => layout the column horizontally only on medium screens and above
+
+                    Adding 3 even columns
+                 -->
+            <div class="col-md">
+                <!-- One of three columns -->
+                <!--
+                        Inside each column, we can add BS component "Card" to make it looks nice!
+                        link: https://getbootstrap.com/docs/5.2/components/card/
+                -->
+                <div class="card bg-light bg-gradient">
+                    <!--
+                            Instead of adding images, we will add icons.
+                            We can use Font Awesome (refer to my code examples)
+                            OR using the BS5 new set of icons:
+                            link: https://getbootstrap.com/docs/5.0/extend/icons/
+
+                            Or Check this link from Tutorial Republic:
+                            - link: https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-icons.php
+
+                        Using BS icons instead of the initial img code
+                        <img src="..." class="card-img-top" alt="...">
+
+                        searching for icons:
+                        link: https://www.tutorialrepublic.com/bootstrap-icons-classes.php
+
+
+                        Changing the icon size as changing the text/font size:
+                        fs-1 => font size 1 (large as heading 1)
+                        .....
+                        fs-6 => font size 6 (small as heading 6)
+                        link: https://getbootstrap.com/docs/5.2/utilities/text/#font-size
+
+                        So you can use font-size and color to change the icon appearance.
+                        Example:
+                        <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+                        -->
+                    <div class="bg-info">
+                        <i class="bi bi-alarm fs-1"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Flexible Times</h5>
+                        <p class="card-text">
+                            Two-shift courses; morning and evening plus the weekend.
+                            You can choose your favourite time!
+                        </p>
+                        <!-- formatting the a link a button -->
+                        <a href="#" class="btn btn-info">Check Dates and Times</a>
+                    </div>
+                </div> <!-- end BS div.card-->
+            </div> <!-- end div.col-md -->
+
+            <div class="col-md">
+                <div class="card bg-light bg-gradient">
+                    <div class="bg-info">
+                        <i class="bi bi-pc-display-horizontal fs-1"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Latests Technologies</h5>
+                        <p class="card-text">
+                            Our course are frequently updated to reflect the recent and the most demanding tools.
+                        </p>
+                        <a href="#" class="btn  btn-info">Go somewhere</a>
+                    </div>
+                </div> <!-- end BS div.card-->
+            </div> <!-- end div.col-md -->
+
+            <div class="col-md">
+                <div class="bg-info">
+                    <i class="bi bi-trophy-fill fs-1"></i>
+                </div>
+                <div class="card bg-light bg-gradient">
+                    <div class="card-body">
+                        <h5 class="card-title">Goal Achievement</h5>
+                        <p class="card-text">
+                            You will be equipped with Web and Job development skills for achieving your goals and
+                            dreams.
+                        </p>
+                        <a href="#" class="btn btn-info">Go somewhere</a>
+                    </div>
+                </div> <!-- end BS div.card-->
+            </div> <!-- end div.col-md -->
+        </div> <!-- end div.row -->
+    </section> <!-- end section#highlights -->
+
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="container">
+        <!--  align-items-center => align the items vertically -->
+        <div class="row align-items-center">
+            <!-- 
+                We need to layout/distribute the column evenly:
+                Also applying row and its column (BS Grid System)
+                Remember that:
+                - using .col => layout the columns horizontally in all screens
+                - using .col-md => layout the column horizontally only on medium screens and above
+                - using .col-lg => layout the column horizontally only on large screens and above
+                
+                Background gradient
+                link: https://getbootstrap.com/docs/5.2/utilities/background/#background-gradient
+            -->
+            <div class="col-md border border-secondary rounded-3 bg-light p-2">
+                <h3>Front-End Development</h3>
+                <p>Learning the essential tools for Front-end development which include:
+                </p>
+                <ul>
+                    <li>HTML and CSS</li>
+                    <li>JavaScript</li>
+                    <li>Bootstrap</li>
+                    <li>ReactJS</li>
+                </ul>
+                <!--
+                    Styling the a element to look like a button:
+                    - btn btn-primary
+                    Also make center it horizontally:
+                    - make it block in any screen size => d-block
+                    - change it's width so it will not take the entire row as block element => w-75
+                    - applying margin auto => m-auto
+                -->
+                <a class="btn btn-primary w-75 d-block m-auto" href="#" role="button">
+                    Front-end development details
+                    <i class="bi-caret-right-fill"></i>
+                </a>
+            </div>
+
+            <div class="col-md">
+                <img src="images/front-end.jpg" class="w-100" alt="Front-End Image">
+            </div>
+        </div>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col-md">
+                <img src="images/back-end.jpg" class="w-100" alt="Back-End Image">
+            </div>
+            <div class="col-md border border-secondary rounded-3 bg-light p-2">
+                <h3>Back-End Development</h3>
+                <p>Learning the essential tools for back-end development which include:
+                </p>
+                <ul>
+                    <li>PHP</li>
+                    <li>Python</li>
+                    <li>MySQL</li>
+                    <li>MongoDB</li>
+                </ul>
+                <a class="btn btn-primary w-75 d-block m-auto" href="#" role="button">
+                    Back-end development details
+                    <i class="bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div> <!-- end div.row -->
+    </section> <!-- end section#curriculum -->
+
+    <!-- Instructors Section -->
+    <section id="instructors" class="container text-center">
+        <h2>Our Instructors</h2>
+        <p class="lead text-center">Learn more about our instructors</p>
+        <div class="row">
+            <!-- 
+                    Adding div elements for 4 instructors as an example
+                    Remember the 12 columns as total for BS
+                    Dividing them by:
+                    - 1 instructor per row in extra small (by default)
+                    - 2 instructors per row on medium screens, so 6 columns for each div
+                    - 4 instructors per row on large screens, so 3 columns for each div               
+                 -->
+            <div class="col-md-6 col-lg-3">
+                <!--
+                        Inside each column, 
+                        we will also add BS component "Card" as we did before
+                        link: https://getbootstrap.com/docs/5.2/components/card/
+    
+                        The initial template
+                        link: https://getbootstrap.com/docs/5.2/components/card/#images
+    
+                        I removed the initial inline style => style="width: 18rem;"
+                        from div.card
+                    -->
+                <div class="card">
+                    <!-- 
+                            Adding extra BS classes to the image
+    
+                            Make the images look like circles by adding rounded corners:
+                            The .rounded-circle class shapes the image to a circle:
+                            .rounded-circle => Adding rounded border for the image
+                            link: https://www.w3schools.com/bootstrap5/bootstrap_images.php
+    
+                            link: https://getbootstrap.com/docs/5.2/utilities/borders/#border-radius
+    
+                            * .w-75 is a bootstrap utility class to set the image to be 75% of its container (the parent element)
+                            link: https://getbootstrap.com/docs/5.2/utilities/sizing/
+    
+                            .card-img-top places an image to the top of the card
+                            link: https://getbootstrap.com/docs/5.2/components/card/#images
+    
+                            .m-auto => set margin for all side to auto to center the image
+                            for all screens
+                        -->
+                    <img src="images/instructor1.jpg" class="card-img-top rounded-circle w-50 m-auto m-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Martin Smith</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <!-- 
+                                Adding the social media icons 
+                                as the content for the anchor elements
+    
+                                Using BS Icons
+                                searching for BS icons
+                                https://www.tutorialrepublic.com/bootstrap-icons-classes.php
+                            -->
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-github"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <img src="images/instructor3.jpg" class="card-img-top rounded-circle w-50 m-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Kate Wilson</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-github"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <img src="images/instructor2.jpg" class="card-img-top rounded-circle w-50 m-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Sam Simpsons</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-github"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <img src="images/instructor4.jpg" class="card-img-top rounded-circle w-50 m-auto" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Alexa Chow</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-github"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="bi-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End div.row -->
+    </section> <!-- end section#instructors -->
+
+    <!--
+        Accordion:
+        Build vertically collapsing accordions in combination with our Collapse JavaScript plugin.
+
+        Link: https://getbootstrap.com/docs/5.2/components/accordion/
+    -->
+    <section id="faq">
+        <!--
+            Adding the div.container again to encapsulate this section withing the page (main contents) margins
+
+            Not adding div.container will make your section expand all the way from left to the right edge of the browser
+        -->
+        <div class="container">
+            <h2 class="text-center">Frequently Asked Questions</h2>
+            <!--
+                Starting with the accordion first BS template (example)
+                Link: https://getbootstrap.com/docs/5.2/components/accordion/#example
+
+                Then we can customize its ids values:
+                For example accordionExample => accordFAQ
+                HINT: Don't forget to use CTRL+H for replacing all (but you can go by one by one also)
+            -->
+            <div class="accordion" id="accordFAQ">
+                <!-- First accordion div item -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <!-- 
+                            Customize the text inside each button.
+                            Each button contains a question
+                         -->
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What I will learn?
+                        </button>
+                        <!--
+                            Notice that => data-bs-target="#collapseOne"
+                            in the button is matching its corresponding div => div id="collapseOne"
+
+                            You can change them like question and answer if you want...
+                         -->
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordFAQ">
+                        <!-- 
+                            Customize the text inside div.accordion-body.
+                            The answer of its related question
+                        -->
+                        <div class="accordion-body">
+                            <p>You will study the front end and the back end tools.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second accordion div item -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Should I have any experience before joining this program
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordFAQ">
+                        <div class="accordion-body">
+                            <p>No need, as this program is designed to take you from A to Z.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third accordion div item -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Can I take this program in the weekends only?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordFAQ">
+                        <div class="accordion-body">
+                            <p>Yes, We have a special feature for Saturdays</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 
+                    Fourth accordion div item
+                    
+                    Adding this extra accordion element 
+                    by copying the same code above for the third accordion
+                    But we have to consider this simple changes:
+                    - id="headingFour" instead id="headingThree"
+                    - data-bs-target="#collapseFour" instead of data-bs-target="#collapseThree" 
+                    - aria-controls="collapseFour" instead of aria-controls="collapseThree"
+                    - id="collapseFour" instead of id="collapseThree" 
+                    - aria-labelledby="headingFour" instead of aria-labelledby="headingThree"
+                -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Can I use PC or MAC computer
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordFAQ">
+                        <div class="accordion-body">
+                            <p>Yes, you can use either one</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end div.accordion -->
+        </div> <!-- end div.container -->
+    </section> <!-- end section#faq-->
+
+    <!-- Students Testimonial -->
+    <section id="testimonial" class="mt-3 container">
+        <!-- 
+            Adding padding from to all sides with 3 points => .p-3
+            -->
+        <div id="carouselTestimonial" class="carousel slide bg-secondary p-3" data-bs-ride="carousel">
+            <!-- 
+            This div.carousel-inner will be the wrapper for the images
+            -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!-- 
+                        Adding Border to the image:
+                        .p-1 => For adding padding of 1 point for all sides
+                        this will add nice little gap between the image and its border
+                        .border => The initial class for adding the border classes
+                        .border-2 => The thickness of the border
+                        from 1 (slim) to 5 (very thick)
+                        .border-white => White color border
+
+                        link: https://getbootstrap.com/docs/5.2/utilities/borders/
+                     -->
+                    <img src="images/carousel-student1.jpg"
+                        class="d-block m-auto w-25 rounded-circle p-1 border border-2 border-white" alt="...">
+                    <!-- 
+                    .carousel-caption: Add captions to your slides within any .carousel-item. 
+                    
+                    Removing this BS class .carousel-caption 
+                    to avoid displaying the text above the image
+
+                    Adding the following BS classes for each text 
+                    .lead => To mak the text standing out
+                    .text-center => center the text
+                    .text-white => white text
+                    -->
+                    <div class="lead text-center text-white">
+                        <h5>Joy Philip</h5>
+                        <p>I really enjoyed learning about Web Development in ABC Advanced Academy.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="images/carousel-student2.jpg"
+                        class="d-block m-auto w-25 rounded-circle p-1 border border-2 border-white" alt="...">
+                    <div class="lead text-center text-white">
+                        <h5>Smith Martinez</h5>
+                        <p>We had a very user-friendly environment with great supports from our instructors</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="images/carousel-student3.jpg"
+                        class="d-block m-auto w-25 rounded-circle p-1 border border-2 border-white" alt="...">
+                    <div class="lead text-center text-white">
+                        <h5>Sarah Grayson</h5>
+                        <p>ABC Advanced Academy helped me to achieve my dreams and reach my goals!</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="images/carousel-student4.jpg"
+                        class="d-block m-auto w-25 rounded-circle p-1 border border-2 border-white" alt="...">
+                    <div class="lead text-center text-white">
+                        <h5>Kenneth Willson</h5>
+                        <p>Now I have the confidence to start building modern websites with the most updated tools</p>
+                    </div>
+                </div>
+            </div> <!-- end div.carousel-inner -->
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselTestimonial"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselTestimonial"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+            <!-- 
+                This original BS div was div.carousel-indicators
+                I moved it to the bottom and removed the class .carousel-indicators
+                adding BS classes:
+                .text-center
+             -->
+            <div class="text-center">
+                <!-- 
+                    Customizing the indicator icons:
+                    .rounded-pill => make it rounded like pill
+                    .p-2 => adding padding of 2 points
+                    .border => the default basic BS border
+                 -->
+                <button type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="0"
+                    class="active rounded-pill p-2 border" aria-current="true" aria-label="Slide 1">
+                </button>
+
+                <button type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="1"
+                    class="rounded-pill p-2 border" aria-label="Slide 2">
+                </button>
+
+                <button type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="2"
+                    class="rounded-pill p-2 border" aria-label="Slide 3">
+                </button>
+
+                <!-- Adding one more button for the fourth image -->
+                <button type="button" data-bs-target="#carouselFeatures" data-bs-slide-to="3"
+                    class="rounded-pill p-2 border" aria-label="Slide 4">
+                </button>
+            </div>
+        </div> <!-- end div#carouselTestimonial .carousel" -->
+    </section> <!-- end section#testimonial -->
+
+    <!-- Contact Us: -->
+    <section id="contact" class="mt-3 container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center">Get in touch</h2>
+                <!-- 
+                    BS Forms:
+                    link: https://getbootstrap.com/docs/5.2/forms/overview/
+
+                    Using the basic/essential template and modify it:
+                 -->
+                <form>
+                    <!-- 
+                        Adding this div for full name 
+                        .mb-3 => adding margin of 3 points from the bottom only
+                    -->
+                    <div class="mb-3">
+                        <!-- using the value of "fullName" => for and id attributes -->
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <!-- 
+                        aria-describedby attribute: 
+                        ==========================
+                        Associating form text with form controls
+                        Form text should be explicitly associated with 
+                        the form control it relates 
+                        to using the aria-describedby attribute. 
+                        This will ensure that assistive technologies—such 
+                        as screen readers—will announce this form text 
+                        when the user focuses or enters the control.
+
+                        link: https://getbootstrap.com/docs/5.2/forms/overview/#form-text
+
+                        aria-describedby attribute is linked to the id value
+                        for the element that describe this field:
+                        - input element => aria-describedby="fullNameHelp"
+                        - div element => id="fullNameHelp"
+                        - .form-text => (Form Text) 
+                        used to create Block-level or inline-level form text
+
+                        Supported elements:
+                        ==================
+                        Validation styles are available for the following
+                        form controls and components:
+
+                        - <input>s and <textarea>s with .form-control 
+                        (including up to one .form-control in input groups)
+                        
+                        - <select>s with .form-select
+
+                        - .form-checks
+
+                        link: https://getbootstrap.com/docs/5.2/forms/validation/#supported-elements
+                        -->
+                        <input type="text" class="form-control" id="fullName" aria-describedby="fullNameHelp">
+                        <!-- 
+                        Form text below inputs can be styled with .form-text. 
+                        If a block-level element will be used, 
+                        a top margin is added for easy spacing from the inputs above.
+                        -->
+                        <div id="fullNameHelp" class="form-text">
+                            Write your full name to be used when we contact you.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="messageTextarea" class="form-label">
+                            Your Message
+                        </label>
+                        <!-- 
+                            Accessibility:
+                            ==============
+                            .aria-label:
+                            - Explicitly setting the accessible name on an element 
+                            - Its value should the same as the label value
+                            that is linked to this textarea (obviously)
+
+                            link: https://getbootstrap.com/docs/5.2/forms/overview/#accessibility
+                         -->
+                        <textarea class="form-control" aria-label="Your Message" id="messageTextarea">
+                        </textarea>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <!-- Just using the default values for the attributes  -->
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">
+                            Receive an update about our new courses!
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="text-center">Contact Info</h2>
+                <!-- 
+                    Using BS "List Group" Component
+                    List has different format and styles in BS,
+                    link: https://getbootstrap.com/docs/5.2/components/list-group/
+
+                    For this contact us form demonstration,
+                    I used the "flush" style to make it looks like input boxes!
+                    link: https://getbootstrap.com/docs/5.2/components/list-group/#flush
+
+                    .list-group => Grouping the list
+                    .list-group-flush => remove some borders and rounded corners
+                    to render list group items edge-to-edge in a parent container
+                    .list-group-item => for every list item
+                -->
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item my-2">
+                        <!-- 
+                            Using the BS Text Utility options:
+                            Font weight and italics
+                            Quickly change the font-weight or font-style of text with these utilities: 
+                            - font-style utilities are abbreviated as .fst-*
+                            - font-weight utilities are abbreviated as .fw-*.
+
+                            https://getbootstrap.com/docs/5.2/utilities/text/#font-weight-and-italics
+                         -->
+                        <span class="fw-bold">Our Location:</span>
+                        1234 Yonge Street, Q1W2E3, Toronto, On
+                    </li>
+
+                    <li class="list-group-item my-2">
+                        <span class="fw-bold">General Enquiry Contact Number:</span>
+                        1-800-123-1234
+                    </li>
+
+                    <li class="list-group-item my-2">
+                        <span class="fw-bold">Student Care Centre Number:</span>
+                        1-800-123-1122
+                    </li>
+
+                    <li class="list-group-item my-2">
+                        <span class="fw-bold">General Enquiry Email:</span>
+                        info@abcadvancedacademy.com
+                    </li>
+
+                    <li class="list-group-item my-2">
+                        <span class="fw-bold">Registration Email:</span>
+                        register@abcadvancedacademy.com
+                    </li>
+                </ul>
+
+                <div class="text-center mt-3">
+                    <a href="#" class="btn btn-secondary">
+                        <i class="bi-linkedin"></i>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="bi-github"></i>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="bi-facebook"></i>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="bi-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end div.row -->
+    </section> <!-- end section#contact -->
+
+    <!-- Subscribe Section -->
+    <!-- 
+        Adding padding for 4px from all the sides
+        .mt-3 => margin of 3 points from the top 
+    -->
+    <section id="subscribe" class="bg-info text-light mt-3 p-4 text-center">
+        <div class="container">
+            <!-- No need for Row and Columns classes here -->
+            <h3>
+                Subscribe to our monthly newsletter to receive the updated news and events.
+            </h3>
+            <div class="input-group mb-3 rounded w-75 m-auto">
+                <!--
+                You can use the Flex (if needed):
+                The content of this container div are two:
+                - Left Side: The input box for email
+                - Right Side: The Submit button
+                
+                We can align these two items horizontally 
+                on medium, large, etc... screens
+
+                In small screen and less, we want to display them vertically
+
+                But we designed the input group based on these General rules:
+                link: https://getbootstrap.com/docs/5.2/forms/input-group/
+
+                For this specific sample:
+                link: https://getbootstrap.com/docs/5.2/forms/input-group/#button-addons
+            -->
+                <input type="text" class="form-control" placeholder="Your Email" aria-label="Recipient's username"
+                    aria-describedby="Recipient's username">
+                <button class="btn btn-dark bg-gradient" type="button" id="btn-subscribe">
+                    Subscribe
+                </button>
+            </div>
+        </div> <!-- end div.container -->
+    </section> <!-- end section#subscribe -->
+
+    <!-- 
+    Adding footer:
+    For Bootstrap version 4 and before only:
+    Jumbotron indicates a big grey box for calling extra attention to some special content or information.
+
+    Tip: Inside a jumbotron you can put nearly any valid HTML, 
+    including other Bootstrap elements/classes.
+
+    We can use div as usual instead of footer, 
+    but nice to use HTML5 semantic element :-)
+
+    <footer class="jumbotron"> => for BS4
+    Notice that class="jumbotron is not avaialable for BS5"
+    but we can imitate its behaviour and style
+
+    .text-center: Center aligned text on all viewport sizes
+    The link: https://getbootstrap.com/docs/4.5/utilities/text/#text-alignment
+
+    p-5 => padding of 5 points for all sides
+    pb-0 => To remove the padding from the bottom only by setting it to 0
+    Notice shuffle the class attribute values will not change the result/styles    
+    -->
+    <footer class="bg-light p-5 pb-0 text-center">
+        <!-- 
+            Display Headings:
+            Display headings are used to stand out more than normal headings (larger font-size and lighter font-weight), 
+            and there are four classes to choose from: .display-1, .display-2, .display-3, .display-4
+            The link: https://www.w3schools.com/bootstrap5/bootstrap_typography.php
+         -->
+        <h1 class="display-4">Web Development Bootcamp</h1>
+        <!--
+            .lead: Make a paragraph stand out
+            .fs-3: Change the font-size of text to 3 points
+         -->
+        <p class="lead font-italic font-weight-bold fs-3">
+            The gate that will take you into the Web Development horizon!
+        </p>
+
+        <p class="mt-3 border-top">
+            Copyright &copy; 2022 ABC Advanced Academy - Web Development Bootcamp
+        </p>
+    </footer>
+
+    <!-- Ending all HTML contents -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

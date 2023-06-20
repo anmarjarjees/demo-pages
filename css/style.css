@@ -1,0 +1,23 @@
+/* 
+Google fonts: https://fonts.google.com/
+Please refer to my Typography lectures for choosing the font family and styles
+
+The font name: Roboto
+Styles: 
+Light 300
+Light 300 italic
+Bold 700
+Bold 700 italic
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#testimonial {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Adding all your custom CSS */
